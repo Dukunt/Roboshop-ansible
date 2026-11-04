@@ -25,13 +25,13 @@
    - name: ceater53 records
      amazon.aws.route53:
       state: present
-      zone: "{{zone_id}}"
-      record: "{{item.item}}-{{environ}}.{{zone_id}}"  #frontend-dev.harihara.fun
+      zone: "{{ zone_id }}"
+      record: "{{ item.item }}-{{ environ }}.{{ zone_id }}"  #frontend-dev.harihara.fun
       tye: A
       ttl: 1
-      value: "{{item.instances[0].private_ip_address}}"
+      value: "{{ item.instances[0].private_ip_address }}"
       wait: true
-     loop: "{{inst_op.results}}"
+     loop: "{{ inst_op.results  }}"
       
              
 
