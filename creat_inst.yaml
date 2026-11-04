@@ -6,8 +6,8 @@
    ami_id: "ami-0055977a6e828a4f4"
    environ: "dev"
    instances:
-    - frontend
-    - catalogue
+   - frontend
+   - catalogue
   tasks:
    - name: create db instances
      amazon.aws.ec2_instance:
@@ -15,7 +15,7 @@
        security_group: "{{ sg_id }}"
        image_id: "{{ ami_id }}"
        name: "{{ item }}-{{ environ }}"
-     loop: " {{instances}} "
+     loop: " {{ instances }} "
      register: inst_op
 
    - name: print ec2 output
