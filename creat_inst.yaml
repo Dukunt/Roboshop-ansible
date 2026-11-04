@@ -1,10 +1,11 @@
-- name: creating instances
+- name: creating instances and r53 records
   hosts: local
   connection: local
   vars:
    sg_id: "sg-0288bab500a44cfb0"
    ami_id: "ami-0055977a6e828a4f4"
    environ: "dev"
+   zone_id: "harihara.fun"
   tasks:
    - name: create db instances
      amazon.aws.ec2_instance:
@@ -19,6 +20,19 @@
 
    - name: print ec2 output
      ansible.builtin.debug:
-      msg: "{{ inst_op }}"   
+      msg: "{{ inst_op }}" 
+
+   - name: ceater53 records
+     amazon.aws.route53:
+      state: present
+      zone: "{{zone_id}}"
+      record: "{{item.item}}-{{environ}}.{{zone_id}}"  #frontend-dev.harihara.fun
+      tye: A
+      ttl: 1
+      value: "{{item.instances[0].private_ip_address}}"
+      wait: true
+     loop: "{{ec2_op.results}}"
+      
+             
 
        
