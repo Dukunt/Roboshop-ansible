@@ -31,7 +31,7 @@
       ttl: 1
       value: "{{item.instances[0].private_ip_address}}"
       wait: true
-     loop: "{{ec2_op.results}}"
+     loop: "{{inst_op.results}}"
       
              
 
