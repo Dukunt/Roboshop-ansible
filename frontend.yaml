@@ -15,6 +15,12 @@
       path: /usr/share/nginx/html
       state: directory
 
+   - name: create html directory
+     ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
+
+
    - name: dwonload frontend
      ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip 
