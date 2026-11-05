@@ -38,7 +38,7 @@
       state: absent
 
    - name: copy the modified config file
-     ansible.builtin.file:
+     ansible.builtin.template:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
 
