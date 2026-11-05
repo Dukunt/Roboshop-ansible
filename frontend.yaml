@@ -30,7 +30,7 @@
      ansible.builtin.unarchive:
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
-      remoe_src: yes
+      remote_src: yes
 
    - name: remove default content in config file
      ansible.builtin.file:
